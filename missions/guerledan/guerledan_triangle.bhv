@@ -1,0 +1,65 @@
+initialize LANCEMENT = false
+initialize FIN_EXPLORATION = false
+initialize AT_BASE = true
+
+// Définitions des modes
+    set MODE = GO_ZONE {
+      LANCEMENT = true
+      AT_BASE = true
+      FIN_EXPLORATION = false
+    }
+
+    set MODE = EXPLORATION {
+      LANCEMENT = true
+      AT_BASE = false
+      FIN_EXPLORATION = false
+    }
+    
+    set MODE = RETURN {
+	LANCEMENT = true
+        FIN_EXPLORATION = true
+        AT_BASE = false
+    }
+
+
+
+// Configuration des behaviors
+
+
+Behavior = BHV_Waypoint
+{
+  name = go_to_zone
+  pwt = 100
+  condition = MODE == GO_ZONE
+  endflag = AT_BASE = false
+  speed = 5.0
+  points = 0,-100 
+  efficiency_measure = off
+}
+
+
+Behavior = BHV_AutoWaypoint
+{ 
+  name      = waypt_exploration
+  pwt       = 100
+  condition = MODE == EXPLORATION
+  endflag   = FIN_EXPLORATION = true
+  speed     = 5.0
+  show_error = true
+  points =  -150,-100 : -180,-50 : -210,-100 : -150,-100 // triangle
+
+  capture_line = true
+  lead = 10
+}
+
+Behavior = BHV_Waypoint
+{
+  name = return_to_base
+  pwt = 100
+  condition = MODE == RETURN
+  endflag = AT_BASE = true
+  speed = 5.0
+  efficiency_measure = off
+
+  points = 0,-100 : 0,0
+}

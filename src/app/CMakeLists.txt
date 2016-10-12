@@ -83,6 +83,8 @@
     ADD_SUBDIRECTORY(interfaces/iGPSoE)
   endif (WITH_GPSOE)
 
+ADD_SUBDIRECTORY(uSimMarineBoat)
+
 ##############################################################################
 #                           END of CMakeLists.txt
 ##############################################################################
