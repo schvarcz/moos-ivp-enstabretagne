@@ -50,7 +50,7 @@
 
   ADD_SUBDIRECTORY(utilities/uSensorsViewer)
   ADD_SUBDIRECTORY(utilities/uNavScreen)
-
+  ADD_SUBDIRECTORY(utilities/uSimMarineBoat)
   if (WITH_JOYSTICK)
     MESSAGE("Building with uJoystick")
     ADD_SUBDIRECTORY(utilities/uJoystick)
@@ -82,8 +82,6 @@
     MESSAGE("Building with iGPSoE")
     ADD_SUBDIRECTORY(interfaces/iGPSoE)
   endif (WITH_GPSOE)
-
-ADD_SUBDIRECTORY(uSimMarineBoat)
 
 ##############################################################################
 #                           END of CMakeLists.txt

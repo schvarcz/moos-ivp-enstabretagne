@@ -32,6 +32,3 @@ TARGET_LINK_LIBRARIES(uSimMarineBoat
   apputil
   mbutil
   ${SYSTEM_LIBS})
-
-
-
