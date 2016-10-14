@@ -15,17 +15,18 @@ ProcessConfig = iPololu
 
   # PinOuts
 
-    PIN_NUMBER = 0
-    PWM_MINI = 1504
-    PWM_MAXI = 1648
-    PWM_ZERO = 1560
+    PIN_NUMBER = 1
+    PWM_MINI = 1408
+    PWM_MAXI = 1760
+    PWM_ZERO = 1542
     BILATERAL_RANGE = true
     REVERSE = false
     MOOSVAR_SUBSCRIPTION = DESIRED_THRUST
 
-    PIN_NUMBER = 1
-    PWM_MINI = 1104
-    PWM_MAXI = 2016
+    PIN_NUMBER = 0
+    PWM_MINI = 928
+    PWM_MAXI = 2000
+    PWM_ZERO = 1648
     SCALE = 20
     BILATERAL_RANGE = true
     REVERSE = false
