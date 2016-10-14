@@ -6,6 +6,8 @@
 // PROCESSES
 #include "processes/pMarinePID.moos"
 #include "processes/pLatLong2LocalGrid.moos"
+#include "processes/pMarineViewer.moos"
+#include "processes/pNodeReporter.moos"
 
 // UTILITIES
 #include "utilities/uSimMarine.moos"

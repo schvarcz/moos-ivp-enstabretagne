@@ -94,5 +94,6 @@ killall uJoystick
 killall uNavScreen
 killall uSensorsViewer
 killall iPololu
+killall uSimMarineBoat
 
 echo Done - Killed all MOOS-Related Processes.....

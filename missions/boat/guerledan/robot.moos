@@ -1,0 +1,61 @@
+Community  = boat
+ServerHost = localhost
+ServerPort = 9000
+
+LatOrigin  = 48.198334
+LongOrigin = -3.014402
+
+#include "includes.moos"
+
+ProcessConfig = ANTLER
+{
+  MSBetweenLaunches = 400
+
+  Run = MOOSDB          @ NewConsole = false
+
+  Run = uMS               @ NewConsole = false
+  Run = uProcessWatch     @ NewConsole = false
+  Run = uNavScreen        @ NewConsole = false
+
+  // Simulation
+  Run = uSimMarineBoat  @ NewConsole = false
+
+  // Processes
+  Run = pNodeReporter   @ NewConsole = false
+  Run = pMarinePID      @ NewConsole = false
+  Run = pHelmIvP        @ NewConsole = true
+
+  // Interface Homme Machine
+  Run = pMarineViewer   @ NewConsole = false
+
+  // ************** SENSORS ******************
+  Run = iXSensINS         @ NewConsole = false
+  Run = iPololu        @ NewConsole = false
+}
+
+ProcessConfig = pHelmIvP
+{
+  AppTick    = 4
+  CommsTick  = 4
+
+  //**************** Choix de la mission ********************//
+  behaviors  = guerledan_hexagone.bhv
+  //*********************************************************//
+
+  domain     = course:0:359:360
+  domain     = speed:0:4:41
+}
+
+ProcessConfig = uSimMarineBoat
+{
+  AppTick   = 25
+  CommsTick = 4
+
+  start_pos = x=0, y=0, speed=0, heading=180, depth=0
+  prefix    = NAV // default is USM_
+
+  // ********* Coefficients du bateau à régler ***********//
+  turn_rate = 20 
+  friction_coef = 2
+  //*****************************************************//
+}

@@ -3,29 +3,25 @@ initialize FIN_EXPLORATION = false
 initialize AT_BASE = true
 
 // Définitions des modes
-    set MODE = GO_ZONE {
-      LANCEMENT = true
-      AT_BASE = true
-      FIN_EXPLORATION = false
-    }
+set MODE = GO_ZONE {
+  LANCEMENT = true
+  AT_BASE = true
+  FIN_EXPLORATION = false
+}
 
-    set MODE = EXPLORATION {
-      LANCEMENT = true
-      AT_BASE = false
-      FIN_EXPLORATION = false
-    }
-    
-    set MODE = RETURN {
-	LANCEMENT = true
-        FIN_EXPLORATION = true
-        AT_BASE = false
-    }
+set MODE = EXPLORATION {
+  LANCEMENT = true
+  AT_BASE = false
+  FIN_EXPLORATION = false
+}
 
-
+set MODE = RETURN {
+LANCEMENT = true
+    FIN_EXPLORATION = true
+    AT_BASE = false
+}
 
 // Configuration des behaviors
-
-
 Behavior = BHV_Waypoint
 {
   name = go_to_zone
@@ -36,7 +32,6 @@ Behavior = BHV_Waypoint
   points = 0,-100 
   efficiency_measure = off
 }
-
 
 Behavior = BHV_AutoWaypoint
 { 

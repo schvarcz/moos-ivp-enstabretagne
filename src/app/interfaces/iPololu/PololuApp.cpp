@@ -139,6 +139,7 @@ bool PololuApp::OnStartUp()
   int pwm_mini = 1200;
   int pwm_zero = -1;
   int pwm_maxi = 1800;
+  double scale = 100.;
   double coeff = 1.;
   double threshold = 1.;
   string unit = "";
@@ -218,11 +219,18 @@ bool PololuApp::OnStartUp()
       handled = true;
     }
 
+    if(param == "SCALE")
+    {
+      scale = atof(value.c_str());
+      handled = true;
+    }
+
     if(param == "MOOSVAR_SUBSCRIPTION" && pin_number != -1)
     {
       PololuPinOut *new_pin = new PololuPinOut(pin_number);
       new_pin->setPwmMini(pwm_mini);
       new_pin->setPwmMaxi(pwm_maxi);
+      new_pin->setScale(scale);
       if(pwm_zero != -1)
           new_pin->setPwmZero(pwm_zero);
       else
@@ -232,6 +240,7 @@ bool PololuApp::OnStartUp()
       m_map_pinouts[toupper(value)] = new_pin;
       pin_number = -1;
       pwm_zero = -1;
+      scale = 100.;
       handled = true;
     }
 
@@ -295,8 +304,8 @@ bool PololuApp::buildReport()
   m_msgs << "Pololu status: \t" << (pololu_ok ? "ok" : error_message) << "\n";
   m_msgs << "\n";
 
-  ACTable actab_pwm(8);
-  actab_pwm << "Pin" << "MoosVar" << "Value" << "Mini" << "Zero" << "Maxi" << "Reversed" << "Bilateral";
+  ACTable actab_pwm(9);
+  actab_pwm << "Pin" << "MoosVar" << "Value" << "Mini" << "Zero" << "Maxi" << "Scale" << "Reversed" << "Bilateral";
   actab_pwm.addHeaderLines();
   for(map<string,PololuPinOut*>::iterator it = m_map_pinouts.begin() ;
         it != m_map_pinouts.end() ;
@@ -308,6 +317,7 @@ bool PololuApp::buildReport()
               << it->second->getPwmMini()
               << it->second->getPwmZero()
               << it->second->getPwmMaxi()
+              << it->second->getScale()
               << (it->second->isReversed() ? "yes" : "no")
               << (it->second->isBilateral() ? "yes" : "no");
   }

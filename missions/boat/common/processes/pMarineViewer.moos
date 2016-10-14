@@ -1,0 +1,22 @@
+ProcessConfig = pMarineViewer
+{
+  AppTick   = 25
+  CommsTick = 4
+
+  tiff_file = ../../../data/maps/guerledan.tif
+  pan_x = -1051
+  pan_y = 587
+  zoom      = 1.2
+
+  appcast_viewable = true
+
+  // les paramètres par défaut sont conservés
+  // pour plus d'informations, entrer pMarineViewer -e
+  // ou lire la documentation en ligne de l'application
+
+  trails_length = 1000
+  trails_connect_viewable = true
+
+  button_one = Lancement # LANCEMENT=true # MOOS_MANUAL_OVERRIDE=false
+  button_two = Fin_Inspection # FIN_INSPECTION=true
+}

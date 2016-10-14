@@ -12,6 +12,7 @@ PololuPinOut::PololuPinOut(int pin_number) : PololuPin(pin_number)
   m_pwm_mini = 1200;
   m_pwm_zero = 1500;
   m_pwm_maxi = 1800;
+  m_scale = 100.0;
   m_bilaterality = true;
   m_reversed = false;
 }
@@ -36,6 +37,11 @@ int PololuPinOut::getPwmMaxi()
   return m_pwm_maxi;
 }
 
+double PololuPinOut::getScale()
+{
+  return m_scale;
+}
+
 bool PololuPinOut::isBilateral()
 {
   return m_bilaterality;
@@ -49,7 +55,7 @@ bool PololuPinOut::isReversed()
 void PololuPinOut::setValue(double value)
 {
   // value \in [-100;100]
-  value /= 100.;
+  value /= m_scale;
 
   if(m_bilaterality) // from -1 to 1
   {
@@ -88,6 +94,11 @@ void PololuPinOut::setPwmZero(int value)
 void PololuPinOut::setPwmMaxi(int value)
 {
   m_pwm_maxi = value;
+}
+
+void PololuPinOut::setScale(double value)
+{
+  m_scale = value;
 }
 
 void PololuPinOut::setBilaterality(bool mode)

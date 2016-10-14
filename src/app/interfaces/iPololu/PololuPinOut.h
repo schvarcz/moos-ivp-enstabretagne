@@ -23,6 +23,7 @@ class PololuPinOut : public PololuPin
     int getPwmMini();
     int getPwmZero();
     int getPwmMaxi();
+    double getScale();
     bool isBilateral();
     bool isReversed();
 
@@ -30,11 +31,13 @@ class PololuPinOut : public PololuPin
     void setPwmMini(int value);
     void setPwmZero(int value);
     void setPwmMaxi(int value);
+    void setScale(double value);
     void setBilaterality(bool mode);
     void reverse(bool mode);
 
   protected:
     int m_pwm, m_pwm_mini, m_pwm_zero, m_pwm_maxi;
+    double m_scale;
     bool m_bilaterality, m_reversed;
 };
 
