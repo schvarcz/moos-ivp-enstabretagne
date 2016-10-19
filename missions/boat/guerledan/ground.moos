@@ -1,0 +1,41 @@
+Community  = boat
+ServerHost = localhost
+ServerPort = 9000
+
+LatOrigin  = 48.198334
+LongOrigin = -3.014402
+
+#include "includes.moos"
+
+ProcessConfig = ANTLER
+{
+  MSBetweenLaunches = 400
+
+  Run = MOOSDB          @ NewConsole = false
+
+  Run = uMS               @ NewConsole = false
+  Run = uProcessWatch     @ NewConsole = false
+  Run = uNavScreen        @ NewConsole = false
+
+  // Interface Homme Machine
+  Run = pMarineViewer   @ NewConsole = false
+  Run = uJoystick         @ NewConsole = false
+  Run = pShare         @ NewConsole = false ~pShareGroundBullet
+}
+
+ProcessConfig = uJoystick
+{
+  AppTick   = 20
+  CommsTick = 20
+
+  DEVICE_NAME = /dev/input/js0
+
+  INCREMENT = false
+  SCALE = 100
+
+  AXIS = 1
+  MOOS_DEST_VAR = DESIRED_THRUST
+
+  AXIS = 3
+  MOOS_DEST_VAR = DESIRED_RUDDER
+}

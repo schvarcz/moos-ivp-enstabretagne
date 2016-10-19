@@ -22,11 +22,9 @@ ProcessConfig = ANTLER
 
   // Processes
   Run = pNodeReporter   @ NewConsole = false
-  Run = pMarinePID      @ NewConsole = false
-  Run = pHelmIvP        @ NewConsole = true
-
-  // Interface Homme Machine
-  Run = pMarineViewer   @ NewConsole = false
+  //Run = pMarinePID      @ NewConsole = false
+  //Run = pHelmIvP        @ NewConsole = true
+  Run = pShare         @ NewConsole = false ~pShareBullet
 
   // ************** SENSORS ******************
   Run = iXSensINS         @ NewConsole = false

@@ -8,6 +8,8 @@
 #include "processes/pLatLong2LocalGrid.moos"
 #include "processes/pMarineViewer.moos"
 #include "processes/pNodeReporter.moos"
+#include "processes/pShareBullet.moos"
+#include "processes/pShareGroundBullet.moos"
 
 // UTILITIES
 #include "utilities/uSimMarine.moos"

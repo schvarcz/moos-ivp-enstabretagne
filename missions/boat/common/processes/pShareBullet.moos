@@ -1,0 +1,9 @@
+ProcessConfig = pShareBullet
+{
+  Input = route = 192.168.1.42:24466
+
+  // Camera binary flows can't pass via pShare (data.size() < 64K)
+  Output = src_name = IMU_*,route=192.168.1.41:24468
+  Output = src_name = GPS_*,route=192.168.1.41:24468
+  Output = src_name = NODE_REPORT_*,route=192.168.1.41:24468
+}
